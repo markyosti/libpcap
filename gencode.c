@@ -3407,6 +3407,11 @@ gen_linktype(proto)
 
 	case DLT_AX25_KISS:
 		bpf_error("AX.25 link-layer type filtering not implemented");
+
+#ifdef PCAP_SUPPORT_NETFILTER
+	case DLT_NFLOG:
+		bpf_error("linux iptables NFLOG filtering not implemented");
+#endif
 	}
 
 	/*
